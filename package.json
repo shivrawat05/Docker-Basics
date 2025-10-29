@@ -6,14 +6,17 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "dev-docker": "copy .env.docker .env && docker-compose -f docker-compose.yml up -d  --build",
-    "dev-local": "copy .env.local .env && docker-compose -f docker-compose.yml up -d --build app redis"
+    "dev-docker": "copy .env.docker .env && docker-compose -f docker-compose.yml up  --build",
+    "dev-local": "copy .env.local .env && docker-compose -f docker-compose.yml up  --build app redis"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.916.0",
+    "@aws-sdk/s3-request-presigner": "^3.916.0",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
+    "multer": "^2.0.2",
     "nodemon": "^3.1.10",
     "pg": "^8.16.3",
     "redis": "^5.8.2"

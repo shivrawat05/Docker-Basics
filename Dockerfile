@@ -1,20 +1,40 @@
-# Use official Node.js LTS image
-FROM node:21
+# # Use official Node.js LTS image
+# FROM node:21
 
-# Set working directory
-WORKDIR /usr/src/app
+# # Set working directory
+# WORKDIR /usr/src/app
 
-# Copy package.json first for caching
-COPY package*.json ./
+# # Copy package.json first for caching
+# COPY package*.json ./
 
-# Install dependencies
+# # Install dependencies
+# RUN npm install
+
+# # Copy rest of the project
+# COPY . .
+
+# # Expose server port
+# EXPOSE 5000
+
+# # Start Node server
+# CMD ["node", "index.js"]
+
+
+
+
+
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package.json ./
+
 RUN npm install
 
-# Copy rest of the project
 COPY . .
 
-# Expose server port
-EXPOSE 5000
+RUN npm run build
 
-# Start Node server
-CMD ["node", "index.js"]
+EXPOSE 8080
+
+CMD [ "npm", "start" ]
